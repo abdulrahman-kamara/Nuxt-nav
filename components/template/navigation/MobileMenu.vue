@@ -1,11 +1,10 @@
 <template>
-  <div v-if="display" class="mobile-menu">
+  <div class="mobile-menu">
     <nuxt-link
-      v-for="{link, title, icon} in navItems"
-      :key="link"
+      v-for="{link, title} in navItems"
+      :key="title"
       :to="link"
-      :icon="icon"
-      class="block py-2 px-2 md:hidden"
+      class="block py-2 px-2 md:hidden hover:text-white hover:bg-gray-900 hover:rounded-sm"
     >
       {{ title }}
     </nuxt-link>
@@ -16,10 +15,6 @@
 export default {
   name: 'MobileMenu',
   props: {
-    display: {
-      type: Boolean,
-      default: false
-    },
     navItems: {
       type: Array,
       default: () => []

@@ -1,7 +1,7 @@
 <!-- Please remove this file from your project -->
 <template>
   <!-- background -->
-  <nav class="bg-gray-100">
+  <nav class="bg-gray-100 filter drop-shadow-lg rounded">
     <!-- div for the containment area -->
     <div class="  max-auto px-4">
       <!-- div to flex and aspacet -->
@@ -9,15 +9,14 @@
         <!-- nav leftside -->
         <div class="flex space-x-4">
           <logo-menu />
-          <nuxt-link
-            v-for="{link, title, icon} in links"
-            :key="link"
+          <primary-menu
+            v-for="{ link, title, subNavItems } in links"
+            :key="title"
             class="flex items-center space-x-4 text-gray-700 hidden md:flex"
-            :to="link"
-            :icon="icon"
-          >
-            {{ title }}
-          </nuxt-link>
+            :link="link"
+            :title="title"
+            :sub-nav-items="subNavItems"
+          />
         </div>
         <!-- navr rightside area -->
         <secondary-nav />
@@ -30,7 +29,7 @@
         </div>
       </div>
       <mobile-menu
-        :display="toggle"
+        v-if="toggle"
         :nav-items="links"
         @toggle="toggle = !toggle"
       />
@@ -42,23 +41,26 @@ import LogoMenu from './template/navigation/LogoMenu.vue'
 import SecondaryNav from './template/navigation/SecondaryNav.vue'
 import MobileMenu from './template/navigation/MobileMenu.vue'
 import MobileButton from './template/navigation/MobileButton.vue'
+import PrimaryMenu from './template/navigation/PrimaryMenu.vue'
 
 export default {
+  name: 'NavBarMenu',
   components: {
     LogoMenu,
     SecondaryNav,
     MobileMenu,
-    MobileButton
+    MobileButton,
+    PrimaryMenu
 
   },
   data () {
     return {
       toggle: false,
       links: [
-        { link: '#', title: 'Features', icon: '~/assets/css/image/logo.svg' },
+        { link: '#', title: 'Features', subNavItems: [{ title: 'coucou' }, { title: 'coucou' }, { title: 'coucou' }] },
         { link: '#', title: 'Pricing' },
         { link: '#', title: 'Health' },
-        { link: '#', title: 'About', icon: '~/assets/css/image/logo.svg' }
+        { link: '#', title: 'About', subNavItems: [{ title: 'coucou' }] }
 
       ]
     }
