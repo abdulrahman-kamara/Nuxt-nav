@@ -11,6 +11,8 @@
           <logo-menu />
           <primary-menu
             v-for="{ link, title, subNavItems } in links"
+            id="/events"
+
             :key="title"
             class="flex items-center space-x-4 text-gray-700 hidden md:flex"
             :link="link"
@@ -57,9 +59,9 @@ export default {
     return {
       toggle: false,
       links: [
-        { link: '#', title: 'Features', subNavItems: [{ title: 'coucou' }, { title: 'coucou' }, { title: 'coucou' }] },
+        { link: '#', title: 'Feature', subNavItems: [{ title: 'coucou' }, { title: 'coucou' }, { title: 'coucou' }] },
         { link: '#', title: 'Pricing' },
-        { link: '#', title: 'Health' },
+        { link: '/event', title: 'Events' },
         { link: '#', title: 'About', subNavItems: [{ title: 'coucou' }] }
 
       ]

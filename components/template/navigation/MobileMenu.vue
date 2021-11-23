@@ -4,7 +4,7 @@
       v-for="{link, title} in navItems"
       :key="title"
       :to="link"
-      class="block py-2 px-2 md:hidden hover:text-white hover:bg-gray-900 hover:rounded-sm"
+      class="block py-2 px-2 md:hidden hover:text-white hover:bg-gray-900 hover:rounded-sm flex justify-center"
     >
       {{ title }}
     </nuxt-link>
